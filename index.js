@@ -7,8 +7,10 @@ import AuthRoute from "./routers/AuthRoute.js";
 import UserRoute from "./routers/UserRoute.js";
 import PostRoute from "./routers/PostRoute.js";
 import UploadRoute from "./routers/UploadRoute.js";
+import ChatRoute from "./routers/ChatRoute.js";
+import MessageRoute from "./routers/MessageRoute.js";
 
-const app = express();
+export const app = express();
 app.use(bodyParser.json({limit: '30mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
 
@@ -43,3 +45,5 @@ app.use('/auth',AuthRoute);
 app.use('/user',UserRoute);
 app.use('/post',PostRoute);
 app.use('/upload',UploadRoute);
+app.use('/chat',ChatRoute);
+app.use('/message',MessageRoute);
