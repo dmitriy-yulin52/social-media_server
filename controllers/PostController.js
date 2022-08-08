@@ -100,7 +100,6 @@ export const getTimelinePosts = async (req, res) => {
         },
       },
     ]);
-
     res.status(200).json(
       currentUserPosts
         .concat(...followingPosts[0].followingPosts)

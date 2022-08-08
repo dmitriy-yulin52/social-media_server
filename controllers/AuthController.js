@@ -14,7 +14,9 @@ export const registerUser = async (req, res) => {
         if (oldUser) {
             res.status(400).json({message: `Пользователь с почтовым адресом ${username} уже существует`})
         }
-        const user = await newUser.save()
+        const userBD = await newUser.save()
+
+        const {password,...user} = userBD._doc
 
         const token = jwt.sign({
             username: user.username, id: user._id
@@ -30,6 +32,8 @@ export const loginUser = async (req, res) => {
 
     try {
         const user = await UserModel.findOne({username});
+
+
         if (user) {
             const validity = await bcrypt.compare(password, user.password);
 
